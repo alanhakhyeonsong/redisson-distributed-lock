@@ -114,3 +114,12 @@ public class StockService {
 ![image](https://github.com/alanhakhyeonsong/redisson-distributed-lock/assets/60968342/5c4b5529-3db0-45da-b155-b5ab4fe8699d)
 
 - [Advice Ordering - docs.spring.io](https://docs.spring.io/spring-framework/reference/core/aop/ataspectj/advice.html#aop-ataspectj-advice-ordering)
+
+## 트랜잭션 전파 속성
+`REQUIRED` : 트랜잭션이 있는 경우 참여하고 없으면 새 트랜잭션을 생성하며 propagation 설정이 없는 경우의 기본값.
+`REQUIRES_NEW` : 항상 새 트랜잭션을 만들고 트랜잭션이 있다면 끝날 때까지 일시중지한다.
+`NESTED` : 기존 트랜잭션과 중첩된 트랜잭션을 생성하고, 없다면 새로 트랜잭션을 생성한다.
+`SUPPORTS` : 존재하는 트랜잭션이 있다면 지원하고, 없으면 트랜잭션 없이 메서드만 실행한다.
+`MANDATORY` : 반드시 트랜잭션이 존재해야 하는 유형으로 없으면 예외(`ThrowIllegalTransactionStateException`)가 발생.
+`NOT_SUPPORTED` : 트랜잭션이 있어도 중단되며, 트랜잭션을 지원하지 않는다.
+`NEVER` : 트랜잭션이 존재하면 예외(`ThrowIllegalTransactionStateException`)가 발생.
