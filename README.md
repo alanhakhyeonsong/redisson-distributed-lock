@@ -71,7 +71,7 @@ public class StockService {
     }
 
     /**
-     * AOP로 분산락을 적용할 때 Propagation 옵션을 별도로 주지 않고 AOP의 Order를 가장 빠르게 부여한 케이스
+     * AOP로 분산락을 적용할 때 Propagation 옵션을 별도로 주지 않고 분산락 AOP의 Order를 가장 빠르게 부여한 케이스
      *
      * @param lockName Redis Lock Name
      * @param id       재고의 ID
@@ -103,6 +103,7 @@ public class StockService {
 
 - `decreaseV3`
   - "동시 요청을 수행할 때, Propagation.REQUIRED 기본 옵션이 적용된 트랜잭션에 분산락 로직이 묶여서 실행되지만, 분산락 AOP의 Order는 가장 우선순위로 부여한 케이스. 성공은 하지만, 근본적으로 문제를 해결한지는 모르겠음."
+  - 분산 락이 우선 순위를 가지도록₩ @Order(-1₩)을 설정했기 때문에, 분산 락이 트랜잭션보다 먼저 실행되어 동작한다. 추측상, 이로 인해 병렬로 실행되는 각각의 요청이 분산 락을 획득한 상태에서 트랜잭션 내의 작업을 순차적으로 실행하게 되므로 이러한 상황에서는 테스트가 성공할 수 있지 않을까 한다.
 
 ![image](https://github.com/alanhakhyeonsong/redisson-distributed-lock/assets/60968342/efb03dd3-059d-4018-8465-b19719892f6a)
 

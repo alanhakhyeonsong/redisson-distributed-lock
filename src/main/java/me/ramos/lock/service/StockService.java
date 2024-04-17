@@ -54,7 +54,7 @@ public class StockService {
     }
 
     /**
-     * AOP로 분산락을 적용할 때 Propagation 옵션을 별도로 주지 않고 AOP의 Order를 가장 빠르게 부여한 케이스
+     * AOP로 분산락을 적용할 때 Propagation 옵션을 별도로 주지 않고 분산락 AOP의 Order를 가장 빠르게 부여한 케이스
      *
      * @param lockName Redis Lock Name
      * @param id       재고의 ID
