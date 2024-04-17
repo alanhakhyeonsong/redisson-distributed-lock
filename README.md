@@ -105,3 +105,11 @@ public class StockService {
   - "동시 요청을 수행할 때, Propagation.REQUIRED 기본 옵션이 적용된 트랜잭션에 분산락 로직이 묶여서 실행되지만, 분산락 AOP의 Order는 가장 우선순위로 부여한 케이스. 성공은 하지만, 근본적으로 문제를 해결한지는 모르겠음."
 
 ![image](https://github.com/alanhakhyeonsong/redisson-distributed-lock/assets/60968342/efb03dd3-059d-4018-8465-b19719892f6a)
+
+## 공식 문서를 살펴봅니다.
+- [Using @Transactional - docs.spring.io](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html)
+  - `@Transactional`이 AOP 상 적용되는 순서의 default 값
+
+![image](https://github.com/alanhakhyeonsong/redisson-distributed-lock/assets/60968342/5c4b5529-3db0-45da-b155-b5ab4fe8699d)
+
+- [Advice Ordering - docs.spring.io](https://docs.spring.io/spring-framework/reference/core/aop/ataspectj/advice.html#aop-ataspectj-advice-ordering)
