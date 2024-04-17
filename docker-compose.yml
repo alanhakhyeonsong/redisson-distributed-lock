@@ -1,0 +1,21 @@
+version: "3"
+services:
+  redis:
+    image: redis:alpine
+    container_name: redis_boot
+    command: redis-server --port 6379
+    hostname: redis
+    ports:
+      - 6379:6379
+
+  mysql:
+    container_name: mysql_ex
+    image: mysql:8.0.30
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=lock_example
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD=1234
+      - TZ=Asia/Seoul
